@@ -1,6 +1,4 @@
-<div align="left">
-  <img src="assets/cognio_labs_logo_250.png" alt="Cognio Labs Logo" width="250"/>
-</div>
+
 
 # Vaani.pro - Intelligent Agentic Chatbot Platform
 
@@ -265,3 +263,7 @@ Vaani.pro has been benchmarked against leading conversational AI platforms, show
 - LangChain & LangGraph teams for the excellent frameworks
 - Groq for high-performance LLM infrastructure
 - Replicate for the image generation capabilities
+
+<div align="center">
+  <img src="assets/cognio_labs_logo_250.png" alt="Cognio Labs Logo" width="250"/>
+</div>
