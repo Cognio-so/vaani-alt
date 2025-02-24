@@ -1,0 +1,19 @@
+{
+    "dependencies": [
+        "langchain-groq",
+        "langchain-google-genai",
+        "langchain-community",
+        "langgraph",
+        "replicate",
+        "qdrant-client",
+        "tavily-python",
+        "pypdf",
+        "docx2txt",
+        "unstructured",
+        "./my_agent"
+    ],
+    "graphs": {
+        "vaani_pro": "./my_agent/agent.py:vaani_graph"
+    },
+    "env": "./.env"
+}
