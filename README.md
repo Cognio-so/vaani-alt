@@ -1,4 +1,4 @@
-<div align="center">
+<div align="left">
   <img src="assets/cognio_labs_logo_250.png" alt="Cognio Labs Logo" width="250"/>
 </div>
 
@@ -249,11 +249,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - **Ashutosh Upadhyay** - AI 
 - **Shivam Upadhyay** - Frontend & API Development
 
-Both from [Cognio Labs](https://cogniolabs.com)
+Both from [Cognio Labs](https://cognio.so)
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is Private and not open for public use.
 
 ## 📊 Benchmarks
 
