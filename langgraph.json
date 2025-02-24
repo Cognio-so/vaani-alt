@@ -14,7 +14,7 @@
         "sentence-transformers"
     ],
     "graphs": {
-        "vaani_pro": "./my_agent/agent.py:vaani_graph"
+        "vaani_pro": "./vaani_alt/agent.py:vaani_graph"
     },
     "env": "./.env"
 }
