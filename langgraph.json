@@ -10,7 +10,8 @@
         "pypdf",
         "docx2txt",
         "unstructured",
-        "./my_agent"
+        "python-dotenv",
+        "sentence-transformers"
     ],
     "graphs": {
         "vaani_pro": "./my_agent/agent.py:vaani_graph"

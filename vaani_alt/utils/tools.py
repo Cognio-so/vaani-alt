@@ -5,6 +5,7 @@ from typing import Dict, List, Optional, Union
 import base64
 from io import BytesIO
 from pathlib import Path
+import uuid
 
 from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader, TextLoader
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -30,18 +31,22 @@ def process_document(file_path: str, file_content: Optional[Union[bytes, str]] =
     ext = get_file_extension(file_path)
     documents = []
     
-    with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as temp_file:
-        if file_content:
-            if isinstance(file_content, str):
-                temp_file.write(file_content.encode('utf-8'))
-            else:
-                temp_file.write(file_content)
-        else:
-            with open(file_path, 'rb') as f:
-                temp_file.write(f.read())
-        temp_file_path = temp_file.name
+    # Create a unique temporary file name
+    temp_file_path = f"/tmp/{uuid.uuid4()}{ext}"
     
     try:
+        # Write content to temporary file
+        with open(temp_file_path, 'wb') as temp_file:
+            if file_content:
+                if isinstance(file_content, str):
+                    temp_file.write(file_content.encode('utf-8'))
+                else:
+                    temp_file.write(file_content)
+            else:
+                with open(file_path, 'rb') as f:
+                    temp_file.write(f.read())
+        
+        # Process the file based on its extension
         if ext == '.pdf':
             loader = PyPDFLoader(temp_file_path)
             documents = loader.load()
@@ -121,15 +126,15 @@ def generate_image(prompt: str) -> List[str]:
         input=input_data
     )
     
-    # Save images to temporary files and return their paths
-    image_paths = []
-    for index, item in enumerate(output):
-        temp_image_path = f"/tmp/output_{index}.webp"
-        with open(temp_image_path, "wb") as file:
-            file.write(item.read())
-        image_paths.append(temp_image_path)
+    # For Langgraph Studio, return URLs instead of local paths
+    image_urls = []
+    for item in output:
+        if hasattr(item, 'url'):
+            image_urls.append(item.url)
+        elif isinstance(item, str) and item.startswith('http'):
+            image_urls.append(item)
     
-    return image_paths
+    return image_urls
 
 @tool
 def web_search(query: str) -> str:

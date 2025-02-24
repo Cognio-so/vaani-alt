@@ -4,8 +4,9 @@ from dotenv import load_dotenv
 
 from langchain_core.messages import BaseMessage, HumanMessage
 from langgraph.graph import StateGraph, END
-from langgraph.checkpoint.sqlite import SqliteSaver
-import sqlite3
+# Remove SQLite checkpointing for Langgraph Studio
+# from langgraph.checkpoint.sqlite import SqliteSaver
+# import sqlite3
 
 from vaani_alt.utils.state import VaaniState
 from vaani_alt.utils.nodes import (
@@ -22,10 +23,10 @@ from vaani_alt.utils.nodes import (
 # Load environment variables
 load_dotenv()
 
-# Set up SQLite database for checkpointing
-db_path = "vaani_state.db"
-conn = sqlite3.connect(db_path, check_same_thread=False)
-memory = SqliteSaver(conn)
+# Remove SQLite database setup
+# db_path = "vaani_state.db"
+# conn = sqlite3.connect(db_path, check_same_thread=False)
+# memory = SqliteSaver(conn)
 
 def vaani_graph() -> StateGraph:
     """Create and return the Vaani.pro workflow graph."""
@@ -101,8 +102,8 @@ def vaani_graph() -> StateGraph:
     workflow.add_edge("user_input", "extra_questions", parallel=True)
     workflow.add_edge("extra_questions", END)
     
-    # Compile the graph with checkpointing
-    return workflow.compile(checkpointer=memory)
+    # Compile the graph without checkpointing for Langgraph Studio
+    return workflow.compile()
 
 # Entry point for direct execution
 if __name__ == "__main__":
