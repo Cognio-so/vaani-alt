@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="@cognio_labs_logo_250.png" alt="Cognio Labs Logo" width="250"/>
+  <img src="assets/cognio_labs_logo_250.png" alt="Cognio Labs Logo" width="250"/>
 </div>
 
 # Vaani.pro - Intelligent Agentic Chatbot Platform
