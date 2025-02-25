@@ -37,5 +37,9 @@ isort = "^6.0.0"
 mypy = "^1.15.0"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vaani-alt"
+version = "0.1.0"
